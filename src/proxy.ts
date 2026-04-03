@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // rutas públicas
   const publicPaths = ['/', '/auth/login', '/auth/signup', '/auth/callback'];
 
   if (publicPaths.includes(pathname)) {
@@ -41,7 +42,10 @@ export async function proxy(request: NextRequest) {
 
   const {
     data: { user },
+    error: userError,
   } = await supabase.auth.getUser();
+
+  console.log('USER CHECK', { pathname, userId: user?.id, userError });
 
   if (!user) {
     return NextResponse.redirect(new URL('/auth/login', request.url));
@@ -49,12 +53,16 @@ export async function proxy(request: NextRequest) {
 
   if (pathname.startsWith('/admin')) {
     const { data: profile, error: profileError } = await supabase
-  .from('profiles')
-  .select('role')
-  .eq('id', user.id)
-  .single();
-      
-      console.log('ADMIN CHECK', { userId: user.id, profile, profileError });
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single();
+
+    console.log('ADMIN CHECK', {
+      userId: user.id,
+      profile,
+      profileError,
+    });
 
     if (!profile || profile.role !== 'admin') {
       return NextResponse.redirect(new URL('/dashboard', request.url));
