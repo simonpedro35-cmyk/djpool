@@ -2,11 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 
 export default function SignupPage() {
-  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -22,20 +20,37 @@ export default function SignupPage() {
       setError('Passwords do not match.');
       return;
     }
+
     if (password.length < 8) {
       setError('Password must be at least 8 characters.');
       return;
     }
 
     setLoading(true);
-    const supabase = createClient();
-    const { error } = await supabase.auth.signUp({ email, password });
 
-    if (error) {
-      setError(error.message);
-      setLoading(false);
-    } else {
+    try {
+      const supabase = createClient();
+
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      console.log('Signup success:', data);
       setSuccess(true);
+    } catch (err) {
+      console.error('Signup failed:', err);
+      setError('Something went wrong while creating your account.');
+    } finally {
+      setLoading(false);
     }
   };
 
