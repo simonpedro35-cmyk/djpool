@@ -11,6 +11,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className="bg-void min-h-screen text-text font-body antialiased">
         {children}
+
+        </main>
+
+  <footer className="text-center text-xs text-dim py-4 border-t border-border">
+    this site is owned by <span className="text-acid">Grandhamusic & Correa.mp4</span>
+  </footer>
       </body>
     </html>
   );
