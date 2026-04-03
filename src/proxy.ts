@@ -48,11 +48,13 @@ export async function proxy(request: NextRequest) {
   }
 
   if (pathname.startsWith('/admin')) {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', user.id)
-      .single();
+    const { data: profile, error: profileError } = await supabase
+  .from('profiles')
+  .select('role')
+  .eq('id', user.id)
+  .single();
+      
+      console.log('ADMIN CHECK', { userId: user.id, profile, profileError });
 
     if (!profile || profile.role !== 'admin') {
       return NextResponse.redirect(new URL('/dashboard', request.url));
