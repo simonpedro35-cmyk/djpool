@@ -5,9 +5,45 @@
 @tailwind utilities;
 
 :root {
+  /* Fonts */
   --font-display: 'Space Mono', monospace;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'Space Mono', monospace;
+
+  /* 🎨 LIGHT MODE (default) */
+  --color-void: #f7f9fc;
+  --color-surface: #ffffff;
+  --color-panel: #eef2f7;
+  --color-border: #d8e0ea;
+  --color-muted: #c7d0db;
+  --color-subtle: #7c8a9a;
+  --color-dim: #5c6978;
+  --color-text: #16202a;
+  --color-bright: #0b1220;
+  --color-acid: #8ab500;
+  --color-acid-dim: #6f9400;
+  --color-cyan: #007c91;
+  --color-cyan-dim: #006272;
+  --color-magenta: #b40088;
+  --color-warn: #d9481c;
+
+  .dark {
+  --color-void: #080a0f;
+  --color-surface: #0e1118;
+  --color-panel: #141820;
+  --color-border: #1e2530;
+  --color-muted: #2a3342;
+  --color-subtle: #4a5568;
+  --color-dim: #718096;
+  --color-text: #e2e8f0;
+  --color-bright: #f7fafc;
+  --color-acid: #c8ff00;
+  --color-acid-dim: #8ab500;
+  --color-cyan: #00e5ff;
+  --color-cyan-dim: #0099aa;
+  --color-magenta: #ff00c8;
+  --color-warn: #ff6b35;
+}
 }
 
 * {
