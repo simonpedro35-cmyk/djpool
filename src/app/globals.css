@@ -10,7 +10,7 @@
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'Space Mono', monospace;
 
-  /* 🎨 LIGHT MODE (default) */
+  /* Light mode */
   --color-void: #f7f9fc;
   --color-surface: #ffffff;
   --color-panel: #eef2f7;
@@ -26,8 +26,10 @@
   --color-cyan-dim: #006272;
   --color-magenta: #b40088;
   --color-warn: #d9481c;
+}
 
-  .dark {
+.dark {
+  /* Dark mode */
   --color-void: #080a0f;
   --color-surface: #0e1118;
   --color-panel: #141820;
@@ -44,7 +46,6 @@
   --color-magenta: #ff00c8;
   --color-warn: #ff6b35;
 }
-}
 
 * {
   box-sizing: border-box;
@@ -56,22 +57,42 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
-  background-color: #080A0F;
-  color: #E2E8F0;
+  background: var(--color-void);
+  color: var(--color-text);
+}
+
+body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #0E1118; }
-::-webkit-scrollbar-thumb { background: #2A3342; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #4A5568; }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-subtle);
+}
 
 /* Selection */
-::selection { background: rgba(200,255,0,0.2); color: #C8FF00; }
+::selection {
+  background: color-mix(in srgb, var(--color-acid) 20%, transparent);
+  color: var(--color-acid);
+}
 
 /* Audio range input */
 input[type='range'] {
@@ -79,7 +100,7 @@ input[type='range'] {
   appearance: none;
   height: 3px;
   border-radius: 2px;
-  background: #2A3342;
+  background: var(--color-muted);
   outline: none;
   cursor: pointer;
 }
@@ -89,7 +110,7 @@ input[type='range']::-webkit-slider-thumb {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #C8FF00;
+  background: var(--color-acid);
   cursor: pointer;
   transition: transform 0.1s;
 }
@@ -103,7 +124,7 @@ input[type='range']::-moz-range-thumb {
   height: 12px;
   border: none;
   border-radius: 50%;
-  background: #C8FF00;
+  background: var(--color-acid);
   cursor: pointer;
 }
 
@@ -111,22 +132,42 @@ input[type='range']::-moz-range-thumb {
 .eq-bar {
   display: inline-block;
   width: 3px;
-  background: #C8FF00;
+  background: var(--color-acid);
   border-radius: 1px;
   animation: eq 0.8s ease-in-out infinite alternate;
 }
-.eq-bar:nth-child(2) { animation-delay: 0.15s; height: 60%; }
-.eq-bar:nth-child(3) { animation-delay: 0.3s;  height: 100%; }
-.eq-bar:nth-child(4) { animation-delay: 0.1s;  height: 50%; }
-.eq-bar:nth-child(5) { animation-delay: 0.25s; height: 80%; }
+
+.eq-bar:nth-child(2) {
+  animation-delay: 0.15s;
+  height: 60%;
+}
+
+.eq-bar:nth-child(3) {
+  animation-delay: 0.3s;
+  height: 100%;
+}
+
+.eq-bar:nth-child(4) {
+  animation-delay: 0.1s;
+  height: 50%;
+}
+
+.eq-bar:nth-child(5) {
+  animation-delay: 0.25s;
+  height: 80%;
+}
 
 @keyframes eq {
-  from { transform: scaleY(0.2); }
-  to   { transform: scaleY(1); }
+  from {
+    transform: scaleY(0.2);
+  }
+  to {
+    transform: scaleY(1);
+  }
 }
 
 /* Focus ring */
 *:focus-visible {
-  outline: 2px solid #C8FF00;
+  outline: 2px solid var(--color-acid);
   outline-offset: 2px;
 }
