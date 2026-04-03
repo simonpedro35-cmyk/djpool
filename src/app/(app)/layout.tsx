@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Sidebar from '@/components/ui/Sidebar';
 import PlayerBar from '@/components/player/PlayerBar';
 import { PlayerProvider } from '@/components/player/PlayerContext';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
@@ -34,11 +35,15 @@ export default async function AppLayout({ children }: { children: React.ReactNod
               </p>
             </div>
 
-            <div className="text-right">
-              <p className="text-sm text-bright">{profile?.email ?? user.email}</p>
-              <p className="text-xs uppercase tracking-widest text-acid">
-                {profile?.role ?? 'user'}
-              </p>
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <p className="text-sm text-bright">{profile?.email ?? user.email}</p>
+                <p className="text-xs uppercase tracking-widest text-acid">
+                  {profile?.role ?? 'user'}
+                </p>
+              </div>
+
+              <ThemeToggle />
             </div>
           </header>
 
