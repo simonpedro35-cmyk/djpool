@@ -2,6 +2,14 @@ import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 
 export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  const publicPaths = ['/', '/auth/login', '/auth/signup', '/auth/callback'];
+
+  if (publicPaths.includes(pathname)) {
+    return NextResponse.next();
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
@@ -34,17 +42,6 @@ export async function proxy(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  const { pathname } = request.nextUrl;
-
-  const publicPaths = ['/', '/auth/login', '/auth/signup'];
-
-  if (publicPaths.includes(pathname)) {
-    if (user && pathname.startsWith('/auth/')) {
-      return NextResponse.redirect(new URL('/dashboard', request.url));
-    }
-    return supabaseResponse;
-  }
 
   if (!user) {
     return NextResponse.redirect(new URL('/auth/login', request.url));

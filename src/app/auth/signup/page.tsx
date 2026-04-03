@@ -39,15 +39,16 @@ export default function SignupPage() {
         },
       });
 
+      console.log('signup result', { data, error });
+
       if (error) {
         setError(error.message);
         return;
       }
 
-      console.log('Signup success:', data);
       setSuccess(true);
     } catch (err) {
-      console.error('Signup failed:', err);
+      console.error('signup crashed', err);
       setError('Something went wrong while creating your account.');
     } finally {
       setLoading(false);
