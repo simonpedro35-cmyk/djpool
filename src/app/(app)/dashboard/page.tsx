@@ -86,7 +86,7 @@ export default async function DashboardPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8 py-6 md:py-8 animate-fade-in space-y-6">
-      <section className="rounded-3xl border border-white/5 bg-gradient-to-br from-panel to-[#0b0f14] p-6 md:p-8 shadow-[0_20px_80px_rgba(0,0,0,0.28)]">
+      <section className="rounded-3xl border border-border bg-gradient-to-br from-panel to-surface p-6 md:p-8 shadow-[0_20px_80px_rgba(0,0,0,0.28)]">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-acid font-mono mb-3">
@@ -105,21 +105,21 @@ export default async function DashboardPage({
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <div className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 min-w-[140px]">
+            <div className="rounded-2xl border border-border bg-panel px-4 py-3 min-w-[140px]">
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-dim">
                 Tracks
               </p>
               <p className="text-2xl font-bold text-bright mt-2">{tracks.length}</p>
             </div>
 
-            <div className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 min-w-[140px]">
+            <div className="rounded-2xl border border-border bg-panel px-4 py-3 min-w-[140px]">
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-dim">
                 Artists
               </p>
               <p className="text-2xl font-bold text-bright mt-2">{uniqueArtists}</p>
             </div>
 
-            <div className="rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 min-w-[140px]">
+            <div className="rounded-2xl border border-border bg-panel px-4 py-3 min-w-[140px]">
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-dim">
                 Genres
               </p>
@@ -130,7 +130,7 @@ export default async function DashboardPage({
       </section>
 
       <section className="grid gap-4 md:grid-cols-3">
-        <div className="rounded-2xl border border-white/5 bg-[#0d1218] p-5 shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
+        <div className="rounded-2xl border border-border bg-surface p-5 shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-acid/10 border border-acid/20 flex items-center justify-center">
               <Disc3 className="w-5 h-5 text-acid" />
@@ -145,7 +145,7 @@ export default async function DashboardPage({
           </p>
         </div>
 
-        <div className="rounded-2xl border border-white/5 bg-[#0d1218] p-5 shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
+        <div className="rounded-2xl border border-border bg-surface p-5 shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/20 flex items-center justify-center">
               <Layers3 className="w-5 h-5 text-cyan" />
@@ -160,7 +160,7 @@ export default async function DashboardPage({
           </p>
         </div>
 
-        <div className="rounded-2xl border border-white/5 bg-[#0d1218] p-5 shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
+        <div className="rounded-2xl border border-border bg-surface p-5 shadow-[0_10px_40px_rgba(0,0,0,0.2)]">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-magenta/10 border border-magenta/20 flex items-center justify-center">
               <Music4 className="w-5 h-5 text-magenta" />
@@ -176,7 +176,7 @@ export default async function DashboardPage({
         </div>
       </section>
 
-      <section className="rounded-3xl border border-white/5 bg-[#0d1218] p-5 md:p-6 shadow-[0_20px_80px_rgba(0,0,0,0.22)]">
+      <section className="rounded-3xl border border-border bg-surface p-5 md:p-6 shadow-[0_20px_80px_rgba(0,0,0,0.22)]">
         <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
           <div>
             <h2 className="text-lg font-semibold text-bright">Filter collection</h2>
