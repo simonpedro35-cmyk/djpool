@@ -48,16 +48,14 @@ export function TrackRow({ track, index }: TrackRowProps) {
     }
   };
 
-  const typeClass = TYPE_COLORS[track.track_type] ?? 'text-dim border-white/10 bg-white/[0.03]';
+  const typeClass = TYPE_COLORS[track.track_type] ?? 'text-dim border-border bg-panel/60';
 
   return (
     <tr
       onClick={() => toggle(track)}
       className={[
-        'group border-b border-white/5 transition-all cursor-pointer',
-        isActive
-          ? 'bg-acid/[0.06]'
-          : 'hover:bg-white/[0.03]',
+        'group border-b border-border transition-all cursor-pointer',
+        isActive ? 'bg-acid/[0.06]' : 'hover:bg-panel/70',
       ].join(' ')}
     >
       <td className="w-14 px-4 py-4">
@@ -66,7 +64,7 @@ export function TrackRow({ track, index }: TrackRowProps) {
             e.stopPropagation();
             toggle(track);
           }}
-          className="w-7 h-7 rounded-full flex items-center justify-center bg-white/[0.04] border border-white/5 hover:border-acid/20 hover:bg-acid/10 transition"
+          className="w-7 h-7 rounded-full flex items-center justify-center bg-panel border border-border hover:border-acid/20 hover:bg-acid/10 transition"
           aria-label={isCurrentPlaying ? 'Pause' : 'Play'}
         >
           {isCurrentPlaying ? (
@@ -87,7 +85,11 @@ export function TrackRow({ track, index }: TrackRowProps) {
 
       <td className="py-4 pr-4 min-w-[220px]">
         <div className="flex flex-col">
-          <p className={`text-sm font-semibold truncate ${isActive ? 'text-acid' : 'text-bright'}`}>
+          <p
+            className={`text-sm font-semibold truncate ${
+              isActive ? 'text-acid' : 'text-bright'
+            }`}
+          >
             {track.title}
           </p>
           <p className="text-[11px] text-muted mt-1">Track #{index + 1}</p>
@@ -131,7 +133,9 @@ export function TrackRow({ track, index }: TrackRowProps) {
       </td>
 
       <td className="py-4 pr-4 hidden sm:table-cell">
-        <span className={`text-[10px] font-mono uppercase tracking-[0.18em] border px-2 py-1 rounded-full ${typeClass}`}>
+        <span
+          className={`text-[10px] font-mono uppercase tracking-[0.18em] border px-2 py-1 rounded-full ${typeClass}`}
+        >
           {track.track_type}
         </span>
       </td>
@@ -144,7 +148,7 @@ export function TrackRow({ track, index }: TrackRowProps) {
         <button
           onClick={handleDownload}
           disabled={downloading}
-          className="inline-flex items-center gap-2 text-xs px-3 py-2 rounded-full bg-white/[0.04] border border-white/5 text-dim hover:text-acid hover:border-acid/20 hover:bg-acid/10 transition disabled:opacity-40 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-2 text-xs px-3 py-2 rounded-full bg-panel border border-border text-dim hover:text-acid hover:border-acid/20 hover:bg-acid/10 transition disabled:opacity-40 disabled:cursor-not-allowed"
           title="Download full track"
         >
           {downloading ? (
@@ -152,7 +156,9 @@ export function TrackRow({ track, index }: TrackRowProps) {
           ) : (
             <Download className="w-3.5 h-3.5" />
           )}
-          <span className="hidden md:inline">{downloading ? 'Loading…' : 'Download'}</span>
+          <span className="hidden md:inline">
+            {downloading ? 'Loading…' : 'Download'}
+          </span>
         </button>
       </td>
     </tr>
@@ -166,7 +172,7 @@ interface TrackTableProps {
 export default function TrackTable({ tracks }: TrackTableProps) {
   if (tracks.length === 0) {
     return (
-      <div className="text-center py-24 text-dim border border-white/5 rounded-3xl bg-white/[0.02]">
+      <div className="text-center py-24 text-dim border border-border rounded-3xl bg-surface">
         <p className="text-5xl mb-4">🎧</p>
         <p className="font-display text-xl text-bright">No tracks found</p>
         <p className="text-sm mt-2">Try adjusting your filters.</p>
@@ -175,8 +181,8 @@ export default function TrackTable({ tracks }: TrackTableProps) {
   }
 
   return (
-    <div className="rounded-3xl border border-white/5 bg-[#0d1218] overflow-hidden shadow-[0_10px_80px_rgba(0,0,0,0.25)]">
-      <div className="px-5 py-4 border-b border-white/5 bg-white/[0.02]">
+    <div className="rounded-3xl border border-border bg-surface overflow-hidden shadow-[0_10px_80px_rgba(0,0,0,0.12)]">
+      <div className="px-5 py-4 border-b border-border bg-panel/60">
         <div className="grid grid-cols-[56px_minmax(220px,1fr)_180px_140px_80px_80px_110px_70px_120px] gap-0 text-[10px] font-mono uppercase tracking-[0.25em] text-muted">
           <div>#</div>
           <div>Title</div>
