@@ -64,7 +64,7 @@ function FileDropZone({
           'rounded-2xl border-2 border-dashed px-6 py-8 text-center cursor-pointer transition-all',
           dragging
             ? 'border-acid bg-acid/5'
-            : 'border-white/10 hover:border-acid/30 hover:bg-white/[0.02]',
+            : 'border-border hover:border-acid/30 hover:bg-panel/60',
           file ? 'border-acid/40 bg-acid/[0.04]' : '',
         ].join(' ')}
       >
@@ -96,7 +96,7 @@ function FileDropZone({
           </div>
         ) : (
           <div className="flex flex-col items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-panel border border-white/5 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-panel border border-border flex items-center justify-center">
               <Upload className="w-5 h-5 text-dim" />
             </div>
 
@@ -125,10 +125,10 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-3xl border border-white/5 bg-[#0d1218] shadow-[0_20px_80px_rgba(0,0,0,0.25)] overflow-hidden">
-      <div className="px-6 py-5 border-b border-white/5 bg-white/[0.02]">
+    <div className="rounded-3xl border border-border bg-surface shadow-[0_20px_80px_rgba(0,0,0,0.12)] overflow-hidden">
+      <div className="px-6 py-5 border-b border-border bg-panel/60">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/5 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-panel border border-border flex items-center justify-center">
             {icon}
           </div>
           <div>
@@ -285,7 +285,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
 
   if (state.status === 'success') {
     return (
-      <div className="rounded-3xl border border-white/5 bg-[#0d1218] p-10 text-center animate-fade-in shadow-[0_20px_80px_rgba(0,0,0,0.25)]">
+      <div className="rounded-3xl border border-border bg-surface p-10 text-center animate-fade-in shadow-[0_20px_80px_rgba(0,0,0,0.12)]">
         <div className="w-16 h-16 mx-auto rounded-2xl bg-acid/10 border border-acid/20 flex items-center justify-center mb-5">
           <CheckCircle2 className="w-8 h-8 text-acid" />
         </div>
@@ -305,7 +305,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
 
           <a
             href="/dashboard"
-            className="px-6 py-3 rounded-2xl border border-white/10 text-dim text-sm hover:text-text hover:border-white/20 transition-colors"
+            className="px-6 py-3 rounded-2xl border border-border text-dim text-sm hover:text-text hover:border-subtle transition-colors"
           >
             View library
           </a>
@@ -332,7 +332,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
               onChange={(e) => setTitle(e.target.value)}
               required
               placeholder="e.g. Running (Extended Mix)"
-              className="w-full bg-panel border border-white/10 rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none transition-colors placeholder:text-muted"
+              className="w-full bg-panel border border-border rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none transition-colors placeholder:text-muted"
             />
           </div>
 
@@ -358,13 +358,13 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
                 value={newArtist}
                 onChange={(e) => setNewArtist(e.target.value)}
                 placeholder="Artist name"
-                className="w-full bg-panel border border-white/10 rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none transition-colors placeholder:text-muted"
+                className="w-full bg-panel border border-border rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none transition-colors placeholder:text-muted"
               />
             ) : (
               <select
                 value={artistId}
                 onChange={(e) => setArtistId(e.target.value)}
-                className="w-full bg-panel border border-white/10 rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
+                className="w-full bg-panel border border-border rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
               >
                 <option value="">— Select artist —</option>
                 {artists.map((a) => (
@@ -383,7 +383,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
             <select
               value={genreId}
               onChange={(e) => setGenreId(e.target.value)}
-              className="w-full bg-panel border border-white/10 rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
+              className="w-full bg-panel border border-border rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
             >
               <option value="">— Select genre —</option>
               {genres.map((g) => (
@@ -406,7 +406,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
                 placeholder="128"
                 min={60}
                 max={220}
-                className="w-full bg-panel border border-white/10 rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none transition-colors placeholder:text-muted"
+                className="w-full bg-panel border border-border rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none transition-colors placeholder:text-muted"
               />
             </div>
 
@@ -417,7 +417,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
               <select
                 value={key}
                 onChange={(e) => setKey(e.target.value)}
-                className="w-full bg-panel border border-white/10 rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
+                className="w-full bg-panel border border-border rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
               >
                 <option value="">—</option>
                 {MUSICAL_KEYS.map((k) => (
@@ -436,7 +436,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
                 value={trackType}
                 onChange={(e) => setTrackType(e.target.value)}
                 required
-                className="w-full bg-panel border border-white/10 rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
+                className="w-full bg-panel border border-border rounded-2xl px-4 py-3 text-text text-sm focus:border-acid focus:outline-none appearance-none"
               >
                 {TRACK_TYPES.map((t) => (
                   <option key={t} value={t}>
@@ -487,7 +487,7 @@ export default function UploadForm({ artists, genres }: UploadFormProps) {
             <span className="text-xs font-mono text-acid">{state.progress}%</span>
           </div>
 
-          <div className="h-2 bg-white/[0.05] rounded-full overflow-hidden">
+          <div className="h-2 bg-muted/40 rounded-full overflow-hidden">
             <div
               className="h-full bg-acid transition-all duration-500"
               style={{ width: `${state.progress}%` }}
