@@ -36,8 +36,8 @@ export default function Sidebar({ profile }: SidebarProps) {
   ];
 
   return (
-    <aside className="hidden md:flex w-64 shrink-0 flex-col bg-[#0b0f14] border-r border-white/5">
-      <div className="px-6 py-6 border-b border-white/5">
+    <aside className="hidden md:flex w-64 shrink-0 flex-col bg-surface border-r border-border">
+      <div className="px-6 py-6 border-b border-border">
         <Link href="/dashboard" className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-acid/10 border border-acid/20 flex items-center justify-center shadow-[0_0_30px_rgba(200,255,0,0.08)]">
             <Disc3 className="w-5 h-5 text-acid" />
@@ -69,7 +69,7 @@ export default function Sidebar({ profile }: SidebarProps) {
                 'flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 group border',
                 active
                   ? 'bg-acid/10 text-acid border-acid/20 shadow-[0_0_20px_rgba(200,255,0,0.05)]'
-                  : 'text-dim hover:text-text hover:bg-white/[0.03] border-transparent hover:border-white/5',
+                  : 'text-dim hover:text-text hover:bg-panel border-transparent hover:border-border',
               ].join(' ')}
             >
               <Icon className="w-4 h-4 shrink-0" />
@@ -80,8 +80,8 @@ export default function Sidebar({ profile }: SidebarProps) {
         })}
       </nav>
 
-      <div className="px-4 pb-5 pt-4 border-t border-white/5">
-        <div className="rounded-2xl bg-white/[0.03] border border-white/5 p-4 mb-3">
+      <div className="px-4 pb-5 pt-4 border-t border-border">
+        <div className="rounded-2xl bg-panel border border-border p-4 mb-3">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-xs text-bright truncate font-medium">
@@ -95,7 +95,7 @@ export default function Sidebar({ profile }: SidebarProps) {
                 'inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded-full border whitespace-nowrap',
                 profile?.role === 'admin'
                   ? 'bg-acid/10 text-acid border-acid/20'
-                  : 'bg-white/[0.04] text-dim border-white/10',
+                  : 'bg-panel text-dim border-border',
               ].join(' ')}
             >
               {profile?.role === 'admin' && <ShieldCheck className="w-3 h-3" />}
@@ -106,7 +106,7 @@ export default function Sidebar({ profile }: SidebarProps) {
 
         <button
           onClick={handleSignOut}
-          className="flex items-center gap-3 w-full px-4 py-3 text-sm text-dim hover:text-warn hover:bg-warn/5 rounded-xl transition-all border border-transparent hover:border-warn/10"
+          className="flex items-center gap-3 w-full px-4 py-3 text-sm text-dim hover:text-warn hover:bg-warn/5 rounded-xl transition-all border border-transparent hover:border-warn/20"
         >
           <LogOut className="w-4 h-4 shrink-0" />
           <span>Sign out</span>
